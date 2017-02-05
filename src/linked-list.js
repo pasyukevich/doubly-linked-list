@@ -113,10 +113,6 @@ class LinkedList {
         return this;
     }
 
-swap(){
-
-}
-
     reverse() {
         var Node=this._head, temp;
         for(var i=0; i<this.length;i++)
