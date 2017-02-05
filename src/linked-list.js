@@ -40,11 +40,10 @@ class LinkedList {
     at(index) {
         var list = this._head,
         length = this.length,
-        count = 0,
-        message = {failure: 'Failure: non-existent node in this list.'};
+        count = 0;
 
         if (length === 0 || index < 0 || index > length) {
-            throw new Error(message.failure);
+            throw new Error();
         }
 
         while (count < index) {
@@ -63,10 +62,9 @@ class LinkedList {
         var node = new Node(data);
         var list = this._head,
             length = this.length,
-            count = 1,
-            message = {failure: 'Failure: non-existent node in this list.'};
+            count = 1;
         if (length === 0 || index < 0 || index > length) {
-            throw new Error(message.failure);
+            throw new Error();
         }
         while (count < index) {
             list = list.next;
@@ -100,10 +98,9 @@ class LinkedList {
         }
         var list = this._head,
             length = this.length,
-            count = 1,
-            message = {failure: 'Failure: non-existent node in this list.'};
+            count = 1;
         if (length === 0 || index < 0 || index > length) {
-            throw new Error(message.failure);
+            throw new Error();
         }
         while (count < index) {
             list = list.next;
@@ -116,21 +113,24 @@ class LinkedList {
         return this;
     }
 
+swap(){
+
+}
+
     reverse() {
-        var node = new Node(),
-           temp = new Node();
+        var Node=this._head, temp;
+        for(var i=0; i<this.length;i++)
+        {
+          temp=Node.next;
+          Node.next=Node.prev;
+          Node.prev=temp;
 
-        this._tail = node = this._head;
-
-        while (node) {
-            temp = node.prev;
-            node.prev = node.next;
-            node.next = temp;
-            node = node.prev;
+          Node=Node.prev;
         }
 
-        if (temp)
-            this._head = temp.prev;
+        temp=this._head;
+        this._head=this._tail;
+        this._tail=temp;
 
         return this;
     }
